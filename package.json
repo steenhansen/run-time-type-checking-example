@@ -1,0 +1,28 @@
+{
+  "scripts": {
+    "start": "npm run prod-has-czech",
+    "dev-has-czech":     "node ./Type-Czech/make_HAS-CZECH.js      && node server-app/index.js  ./Type-Czech/config_HAS-CZECH.js",
+    "dev-without-czech": "node ./Type-Czech/make_WITHOUT-CZECH.js  && node server-app/index.js  ./Type-Czech/config_WITHOUT-CZECH.js",
+    "express-favicon": "^2.0.1",
+    "prod-has-czech":     "node ./Type-Czech/make_HAS-CZECH.js      && npm run make-rollup  && npm run server-start  ./Type-Czech/config_HAS-CZECH.js",
+    "prod-without-czech": "node ./Type-Czech/make_WITHOUT-CZECH.js  && npm run make-rollup  && npm run server-start  ./Type-Czech/config_WITHOUT-CZECH.js",
+    "make-rollup": "vite build && vite build --ssr",
+    "server-start": "cross-env NODE_ENV=production node server-app/index.js"
+  },
+  "engines": {
+    "node": "16.14.0"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^1.2.0",
+    "autoprefixer": "^10.4.2",
+    "cross-env": "^7.0.3",
+    "express": "^4.17.3",
+    "express-favicon": "^2.0.1",
+    "postcss": "^8.4.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "tailwindcss": "^3.0.23",
+    "vite": "^2.8.4",
+    "vite-plugin-ssr": "^0.3.59"
+  }
+}

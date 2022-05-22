@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .base-button { 
+    @apply
+      text-gray-800 
+      hover:bg-gray-100  
+      font-semibold
+      border 
+      border-gray-400 
+      rounded 
+      shadow
+      p-[0px]
+  }
+}
+
+.invalid-with-style{
+  color: red;
+}
+
+button.base-button>a{
+      TEST_background-color: yellow;
+      TEST_opacity:0.50;
+  display: inline-block;    
+   position: relative;  
+   z-index: 1;   
+   top:-1px;
+   padding-left:3px;
+   padding-right:3px;
+   padding-bottom:2px;
+   margin-bottom: -2px;
+   margin-top:-1px;
+   margin-left:-1px;
+   margin-right:-1px;
+}
+
+
+.base-radio-label {
+  @apply 
+    pr-8 
+    inline-block
+}
+
+.base-link {
+  color: rgba(0,114,178, 0.8);  /* blue_202 x 0.8*/
+  text-decoration: underline;
+}
+
+.base-link:hover {
+  color: rgb(0,114,178);  /* blue_202 */
+}
+
+
+button.base-button>a:hover {
+   color: rgb(0,158,115);
+}
+
+.base-edit {
+  background-color: rgba(0,158,115,0.2);
+}
+
+body{
+  margin-left:10px;
+}
+
+
+
