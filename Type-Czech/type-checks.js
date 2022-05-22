@@ -2,20 +2,9 @@ import { type_czech } from './make-Type-Czech-import';
 import { numberStyle, MAX_TEST_AJAX_DELAY_SEC, BEGIN_SERVER_ERROR, VALID_NUMBER_TYPES,SERVER_RESULT_SHAPE } from "../import-2-require/common-2-import";
 import { numberNotMatchType } from '../import-2-require/valid-types-import';
 import { fakeConsole } from '../jsx-components/fake-console';
+import { romanToInt } from '../import-2-require/roman-numbers-import';
 
 export { PRE_serverGetSqrt, POST_serverGetSqrt }
-
-var fetched_number_type = '';
-var fetched_value = '';
-
-function noServerAcknowledgement() {
-  if (fetched_number_type === 'Unknown') {
-    fakeConsole(`Server did not respond because type of number was 'Unknown', not one of Word/Roman/Float/Integer`)
-  } else {
-    fakeConsole(`Server did not respond because '${fetched_value}' is not a ${fetched_number_type}`)
-  }
-  type_czech.check_assert(`POST_serverGetSqrt E did not return within ${MAX_TEST_AJAX_DELAY_SEC} milliseconds`)
-}
 
 function PRE_serverGetSqrt(browser_num_style, num_to_square) {
   const the_parameters =[browser_num_style, num_to_square];
@@ -61,10 +50,28 @@ function POST_serverGetSqrt(square_promise) {
       } else {
         fakeConsole(`serverGetSqrt() returned with the value of '${square_root}' which is a ${fetched_number_type}`);
       }
+      if (fetched_number_type === 'Roman') {
+        const start_number = romanToInt(fetched_value);
+        const end_number = romanToInt(square_root);
+        fakeConsole('Roman to decimal values ' + end_number + '^2 = ' + start_number);
+      }
     });
 
   setTimeout(() => is_resolved ? console.log('server acknowledged fetch')
     : noServerAcknowledgement()
     , MAX_TEST_AJAX_DELAY_SEC);
+}
+
+
+var fetched_number_type = '';
+var fetched_value = '';
+
+function noServerAcknowledgement() {
+  if (fetched_number_type === 'Unknown') {
+    fakeConsole(`Server did not respond because type of number was 'Unknown', not one of Word/Roman/Float/Integer`)
+  } else {
+    fakeConsole(`Server did not respond because '${fetched_value}' is not a ${fetched_number_type}`)
+  }
+  type_czech.check_assert(`POST_serverGetSqrt E did not return within ${MAX_TEST_AJAX_DELAY_SEC} milliseconds`)
 }
 

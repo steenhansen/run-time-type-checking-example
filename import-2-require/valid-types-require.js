@@ -1,5 +1,5 @@
 
-const {BEGIN_SERVER_ERROR,  isNumeric } = require("../import-2-require/common-2-require");
+const { BEGIN_SERVER_ERROR, isNumeric } = require("../import-2-require/common-2-require");
 
 const { romanToInt } = require('../import-2-require/roman-numbers-require');
 const { wordToInt } = require('../import-2-require/word-numbers-require');
@@ -10,7 +10,7 @@ function validRomanNumber(number_style, num_to_square) {
   if (number_style === 'roman-style') {
     const roman_integer = romanToInt(num_to_square);
     if (!Number.isInteger(roman_integer)) {
-      return BEGIN_SERVER_ERROR + `- '${num_to_square}' is not a valid roman number I..MMMCMXCIX`; 
+      return BEGIN_SERVER_ERROR + `- '${num_to_square}' is not a valid roman number I..MMMCMXCIX`;
     }
   }
 }
@@ -34,11 +34,13 @@ function validFloat(number_style, float_string) {
 
 function validInteger(number_style, num_to_square) {
   if (number_style === 'integer-style') {
+    if (num_to_square.includes('.')) {
+      return BEGIN_SERVER_ERROR + `- '${num_to_square}' is not an integer`;
+    }
     const integer_num = Number(num_to_square);
     if (typeof integer_num !== 'number') {
       return BEGIN_SERVER_ERROR + `- '${num_to_square}' is not an integer`;
     }
-
     if (Math.trunc(integer_num) !== integer_num) {
       return BEGIN_SERVER_ERROR + `- '${num_to_square}' is not an integer`;
     }

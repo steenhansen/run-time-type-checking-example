@@ -15,7 +15,7 @@ function NumberStyle({ number_style, setNumberStyle , setServerSqrt}) {
 
         <label className='base-radio-label'>
           <input onChange={styleChange} type="radio"
-            value="roman-style" checked={number_style === "roman-style"} /> Roman numerals (xvi) </label>
+            value="roman-style" checked={number_style === "roman-style"} /> Roman numerals (mcdxliv) </label>
 
         <label className='base-radio-label'>
           <input onChange={styleChange}  type="radio" 

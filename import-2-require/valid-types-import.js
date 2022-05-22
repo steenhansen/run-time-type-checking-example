@@ -30,11 +30,13 @@ function validFloat(number_style, float_string) {
 
 function validInteger(number_style, num_to_square) {
   if (number_style === 'integer-style') {
+    if (num_to_square.includes('.')) {
+      return BEGIN_SERVER_ERROR + `- '${num_to_square}' is not an integer`;
+    }
     const integer_num = Number(num_to_square);
     if (typeof integer_num !== 'number') {
       return BEGIN_SERVER_ERROR + `- '${num_to_square}' is not an integer`;
     }
-
     if (Math.trunc(integer_num) !== integer_num) {
       return BEGIN_SERVER_ERROR + `- '${num_to_square}' is not an integer`;
     }

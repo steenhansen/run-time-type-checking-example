@@ -5,9 +5,7 @@ import { NumberEnter } from './NumberEnter'
 import { BEGIN_SERVER_ERROR, numberStyle } from "../import-2-require/common-2-import";
 import { NumberStyle } from './NumberStyle'
 import { CheckingOnOff } from './CheckingOnOff'
-
 import { PRE_serverGetSqrt, POST_serverGetSqrt } from '../Type-Czech/type-checks'
-
 import { fakeConsole } from './fake-console';
 
 export { SquareRoot }
@@ -43,7 +41,7 @@ function SquareRoot() {
     fakeConsole(' ');
     setServerSqrt('waiting for server ...')
     const num_style_sqrt_obj = await serverGetSqrt(number_style, to_square);
-    const { _server_style, square_root } = num_style_sqrt_obj;
+    const { square_root } = num_style_sqrt_obj;
     if (square_root.startsWith(BEGIN_SERVER_ERROR)) {
       setServerSqrt('Unrepresentable in ' + fetched_number_type);
     } else {
@@ -62,7 +60,8 @@ function SquareRoot() {
       }
     }
   }
-  const num_rows = 7;
+
+  const num_rows = 8;
   return (
     <>
       <CheckingOnOff checking_on={checking_on_off} setChecking={setCheckingOnOff}     ></CheckingOnOff>
@@ -71,7 +70,7 @@ function SquareRoot() {
 
       <NumberEnter to_square={to_square} setToSquare={setToSquare} setServerSqrt={setServerSqrt}> </NumberEnter>
       <SquareButton squareTheNumber={squareTheNumber} number_style={number_style}></SquareButton> &nbsp;&nbsp;
-      <span className="text-xl">&#8730;</span><span className="-ml-0.5 overline">{to_square}</span> &nbsp; = &nbsp; {server_sqrt}
+      <span className="sqrt-look">&#8730;</span><span className="-ml-0.5 overline">{to_square}</span> &nbsp; = &nbsp; {server_sqrt}
       <br /> <br />
       <textarea id='what-happens' className='w-full bg-gray-200' rows={num_rows}></textarea>
       <br />
@@ -80,4 +79,11 @@ function SquareRoot() {
   )
 }
 
+/*
+8730
+
+margin-right:-1px 
+font-size: 22px
+
+*/
 
