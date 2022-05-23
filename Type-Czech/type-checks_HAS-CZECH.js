@@ -37,6 +37,7 @@ function POST_serverGetSqrt(square_promise) {
   fakeConsole(`Waiting for serverGetSqrt() to return from server with the square root of '${fetched_value}' as a ${fetched_number_type} type`);
   let is_resolved = false;
   square_promise.then((num_style_sqrt_obj) => {
+    console.log("just got back from server---", num_style_sqrt_obj);
     is_resolved = true;
     const result_err = type_czech.checkParam_type(num_style_sqrt_obj, SERVER_RESULT_SHAPE);
     if (result_err) {

@@ -19,7 +19,9 @@ async function serverGetSqrt(number_style, to_square_root) {
       headers: { "Content-Type": "application/json" },
     };
     const get_response = await fetch(the_url, requestOptions);
+    console.log("the GET_RESPONSE ", get_response);
     const num_style_sqrt_obj = await get_response.json();
+    console.log("the ANSYNC num_style_sqrt_obj ", num_style_sqrt_obj);
     return num_style_sqrt_obj;
   } catch (e) {
     return "serverGetSqrt-Error - " + e.message;
