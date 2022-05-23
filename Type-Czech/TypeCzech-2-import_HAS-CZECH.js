@@ -12,7 +12,7 @@ npm run dev ../dev-config.js
 
 /* eslint-disable max-len */
 /* eslint-disable block-scoped-var */
-const VERS_NUM = "version 1.3.0 2022-05-19";
+const VERS_NUM = "version 1.3.0 2022-05-23";
 
 /*
     TypeCzech contains:
@@ -1645,7 +1645,7 @@ type_czech._ParametersCheck(type_czech.TYPE_CZECH_EVENTS);
           const func_name_params = `${func_parts[0]})`;
           const funct_params = func_name_params.replace(/^function [^(]*/, "");
           const param_names = func_parts[2];
-          const param_array = param_names.split(", ");
+          const param_array = param_names.split(","); // NB^2 was ", " but when rolled-up, no space !
           if (param_array.includes("arguments")) {
             const arguments_error = `Param 'arguments' shadows arguments object : ${func_parts[0]})`;
             _coloredConsole(arguments_error, TRACE_COLORS);
