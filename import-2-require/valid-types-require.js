@@ -34,7 +34,7 @@ function validInteger(number_style, num_to_square) {
       return BEGIN_SERVER_ERROR + `- '${num_to_square}' is not an integer`;
     }
     const integer_num = Number(num_to_square);
-    if (isNaN(integer_num)) {
+    if (Number.isNaN(integer_num)) {
       return BEGIN_SERVER_ERROR + `- '${num_to_square}' is not an integer`;
     }
   }
