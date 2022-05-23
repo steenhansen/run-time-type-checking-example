@@ -38,10 +38,6 @@ function validInteger(number_style, num_to_square) {
       return BEGIN_SERVER_ERROR + `- '${num_to_square}' is not an integer`;
     }
   }
-
-  if (Math.trunc(integer_num) !== integer_num) {
-    return BEGIN_SERVER_ERROR + `- '${num_to_square}' is not an integer`;
-  }
 }
 
 function numberNotMatchType(number_style, num_to_square) {
