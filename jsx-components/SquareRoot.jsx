@@ -39,6 +39,7 @@ function SquareRoot() {
     setServerSqrt("waiting for server ...");
     const num_style_sqrt_obj = await serverGetSqrt(number_style, to_square_root);
     const { square_root } = num_style_sqrt_obj;
+    console.log("the square_root ", square_root, typeof square_root);
     if (square_root.startsWith(BEGIN_SERVER_ERROR)) {
       setServerSqrt("Unrepresentable in " + fetched_number_type);
     } else {
