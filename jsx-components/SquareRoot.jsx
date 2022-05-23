@@ -38,6 +38,7 @@ function SquareRoot() {
     fakeConsole(" ");
     setServerSqrt("waiting for server ...");
     const num_style_sqrt_obj = await serverGetSqrt(number_style, to_square_root);
+    console.log("the num_style_sqrt_obj ", num_style_sqrt_obj, typeof num_style_sqrt_obj);
     const { square_root } = num_style_sqrt_obj;
     console.log("the square_root ", square_root, typeof square_root);
     if (square_root.startsWith(BEGIN_SERVER_ERROR)) {
