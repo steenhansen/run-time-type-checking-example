@@ -17,7 +17,7 @@ const DEFAULT_CONFIG = {
 const NOP_TYPE_CZECH = {
   linkUp: (nop) => nop,
   isActive: (x) => false,
-  isPruned: (y) => false,
+  isPruned: (y) => true,
   _from: "common-2-require",
 };
 

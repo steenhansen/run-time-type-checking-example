@@ -47,13 +47,11 @@ function SquareRoot() {
     fakeConsole(" ");
   }
 
-  if (type_czech.isActive()) {
-    if (!type_czech.isPruned()) {
-      if (checking_on_off === "On") {
-        type_czech.enableTests();
-      } else {
-        type_czech.disableTests();
-      }
+  if (!type_czech.isPruned()) {
+    if (checking_on_off === "On") {
+      type_czech.enableTests();
+    } else {
+      type_czech.disableTests();
     }
   }
 

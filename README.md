@@ -42,7 +42,7 @@ Checks that the parameters for serverGetSqrt(), number_style and to_square_root
 
 <br/>
 
-- Local Dev with Type-Czech off
+- Local Dev with Type-Czech off ( Run Time Type Checking On and Off do nothing )
   - npm run dev-without-czech
 
 <br/>
@@ -52,7 +52,7 @@ Checks that the parameters for serverGetSqrt(), number_style and to_square_root
 
 <br/>
 
-- Local Prod with Type-Czech off
+- Local Prod with Type-Czech off ( Run Time Type Checking On and Off do nothing )
   - npm run prod-without-czech
 
 <br/>
