@@ -1,15 +1,6 @@
-const {
-  isNumeric,
-  BEGIN_SERVER_ERROR,
-} = require("../import-2-require/common-2-require");
-const {
-  romanToInt,
-  intToRoman,
-} = require("../import-2-require/roman-numbers-require");
-const {
-  wordToInt,
-  intToWord,
-} = require("../import-2-require/word-numbers-require");
+const { isNumeric, BEGIN_SERVER_ERROR } = require("../import-2-require/common-2-require");
+const { romanToInt, intToRoman } = require("../import-2-require/roman-numbers-require");
+const { wordToInt, intToWord } = require("../import-2-require/word-numbers-require");
 const { numberTypeError } = require("../import-2-require/valid-types-require");
 
 function romanSquareRoot(to_sqrt) {
@@ -23,12 +14,7 @@ function romanSquareRoot(to_sqrt) {
   if (decimal_sqrt === integer_sqrt) {
     roman_result = intToRoman(integer_sqrt);
   } else {
-    roman_result = new Error(
-      BEGIN_SERVER_ERROR +
-        "Cannot represent " +
-        decimal_sqrt +
-        " in Roman numerals"
-    );
+    roman_result = new Error(BEGIN_SERVER_ERROR + "Cannot represent " + decimal_sqrt + " in Roman numerals");
   }
   return roman_result;
 }
@@ -44,18 +30,14 @@ function wordSquareRoot(to_sqrt) {
   if (decimal_sqrt === integer_sqrt) {
     word_result = intToWord(integer_sqrt);
   } else {
-    word_result = new Error(
-      BEGIN_SERVER_ERROR + "Cannot represent " + decimal_sqrt + " in Words"
-    );
+    word_result = new Error(BEGIN_SERVER_ERROR + "Cannot represent " + decimal_sqrt + " in Words");
   }
   return word_result;
 }
 
 function floatSquareRoot(to_sqrt) {
   if (!isNumeric(to_sqrt)) {
-    const float_error = new Error(
-      BEGIN_SERVER_ERROR + ", " + to_sqrt + " is not a number"
-    );
+    const float_error = new Error(BEGIN_SERVER_ERROR + ", " + to_sqrt + " is not a number");
     return float_error;
   }
   if (to_sqrt < 0) {
@@ -69,17 +51,13 @@ function floatSquareRoot(to_sqrt) {
 
 function integerSquareRoot(to_sqrt) {
   if (!isNumeric(to_sqrt)) {
-    const not_int_error = new Error(
-      BEGIN_SERVER_ERROR + ", " + to_sqrt + " is not a number"
-    );
+    const not_int_error = new Error(BEGIN_SERVER_ERROR + ", " + to_sqrt + " is not a number");
     return not_int_error;
   }
   const make_number = Number(to_sqrt);
 
   if (Math.trunc(make_number) != make_number) {
-    const not_integer = new Error(
-      BEGIN_SERVER_ERROR + ", " + make_number + " is not an integer"
-    );
+    const not_integer = new Error(BEGIN_SERVER_ERROR + ", " + make_number + " is not an integer");
     return not_integer;
   }
   if (make_number < 0) {
@@ -88,17 +66,13 @@ function integerSquareRoot(to_sqrt) {
     if (Math.trunc(neg_int_sqrt) === neg_int_sqrt) {
       return neg_int_sqrt + "i";
     }
-    return new Error(
-      BEGIN_SERVER_ERROR + ", " + neg_int_sqrt + "i is not an integer"
-    );
+    return new Error(BEGIN_SERVER_ERROR + ", " + neg_int_sqrt + "i is not an integer");
   } else {
     const pos_int_sqrt = Math.sqrt(make_number);
     if (Math.trunc(pos_int_sqrt) === pos_int_sqrt) {
       return pos_int_sqrt;
     }
-    return new Error(
-      BEGIN_SERVER_ERROR + ", " + pos_int_sqrt + " is not an integer"
-    );
+    return new Error(BEGIN_SERVER_ERROR + ", " + pos_int_sqrt + " is not an integer");
   }
 }
 
@@ -119,14 +93,17 @@ function getInputNumber(req) {
 }
 
 function returnSquareRoot(server_style, square_root, to_sqrt, res) {
+  console.log("return ZZZZZ", server_style, square_root, to_sqrt);
   if (numberTypeError(server_style, to_sqrt)) {
     console.log("No acknowledgement as number type did not match the value");
   } else if (square_root instanceof Error) {
     const wrong_type_mess = square_root.message;
+    console.log("return JJJJJJJ", wrong_type_mess, typeof wrong_type_mess);
     const wrong_type_result = JSON.stringify({
       server_style,
       square_root: wrong_type_mess,
     });
+    console.log("return AAAA", wrong_type_result);
     res.status(200).type("text/plain").send(wrong_type_result);
   } else {
     const square_root_str = square_root.toString();
@@ -134,6 +111,7 @@ function returnSquareRoot(server_style, square_root, to_sqrt, res) {
       server_style,
       square_root: square_root_str,
     });
+    console.log("return BBBBB", server_result);
     res.status(200).type("text/plain").send(server_result);
   }
 }
