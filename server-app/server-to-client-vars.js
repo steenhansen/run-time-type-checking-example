@@ -1,6 +1,5 @@
 module.exports = { PageContextInit };
 
-
 async function PageContextInit(url) {
   const G_TYPE_CZECH_ON = global.GLOBAL_CONFIG.G_TYPE_CZECH_ON;
   const G_TYPE_CZECH_OPTIONS = global.GLOBAL_CONFIG.G_TYPE_CZECH_OPTIONS;

@@ -1,50 +1,49 @@
-import { validRomanNumber, validWordNumber, validFloat, validInteger } from '../import-2-require/valid-types-import';
-import React, { useState } from 'react'
+import { validRomanNumber, validWordNumber, validFloat, validInteger } from "../import-2-require/valid-types-import";
+import React, { useState } from "react";
 
-export { NumberEnter }
+export { NumberEnter };
 
-function NumberEnter({ to_square, setToSquare, setServerSqrt }) {
-  const [word_color, setWordColor] = useState('text-rose-600');
-  const [roman_color, setRomanColor] = useState('text-green-900');
-  const [float_color, setFloatColor] = useState('text-rose-600');
-  const [integer_color, setIntegerColor] = useState('text-rose-600');
+function NumberEnter({ to_square_root, setToSquare, setServerSqrt }) {
+  const [word_color, setWordColor] = useState("text-rose-600");
+  const [roman_color, setRomanColor] = useState("text-green-900");
+  const [float_color, setFloatColor] = useState("text-rose-600");
+  const [integer_color, setIntegerColor] = useState("text-rose-600");
 
   const numberChange = (event) => {
-    setServerSqrt('?');
+    setServerSqrt("?");
     const current_number = event.target.value;
-    if (current_number === '') {
-      setWordColor('');
-      setRomanColor('');
-      setFloatColor('');
-      setIntegerColor('');
+    if (current_number === "") {
+      setWordColor("");
+      setRomanColor("");
+      setFloatColor("");
+      setIntegerColor("");
     } else {
-
-      const word_error = validWordNumber('word-style', current_number)
+      const word_error = validWordNumber("word-style", current_number);
       if (word_error) {
-        setWordColor('text-rose-600');
+        setWordColor("text-rose-600");
       } else {
-        setWordColor('text-green-900');
+        setWordColor("text-green-900");
       }
 
-      const roman_error = validRomanNumber('roman-style', current_number)
+      const roman_error = validRomanNumber("roman-style", current_number);
       if (roman_error) {
-        setRomanColor('text-rose-600');
+        setRomanColor("text-rose-600");
       } else {
-        setRomanColor('text-green-900');
+        setRomanColor("text-green-900");
       }
 
-      const float_error = validFloat('float-style', current_number)
+      const float_error = validFloat("float-style", current_number);
       if (float_error) {
-        setFloatColor('text-rose-600');
+        setFloatColor("text-rose-600");
       } else {
-        setFloatColor('text-green-900');
+        setFloatColor("text-green-900");
       }
 
-      const integer_error = validInteger('integer-style', current_number)
+      const integer_error = validInteger("integer-style", current_number);
       if (integer_error) {
-        setIntegerColor('text-rose-600');
+        setIntegerColor("text-rose-600");
       } else {
-        setIntegerColor('text-green-900');
+        setIntegerColor("text-green-900");
       }
     }
     setToSquare(current_number);
@@ -54,13 +53,13 @@ function NumberEnter({ to_square, setToSquare, setServerSqrt }) {
     <>
       <br />
       <span className={`${word_color}  font-semibold`}>Word</span>&nbsp;-&nbsp;
-      <span className={`${roman_color}  font-semibold`}>Roman</span>&nbsp;-&nbsp;
-      <span className={`${float_color}  font-semibold`}>Float</span>&nbsp;-&nbsp;
+      <span className={`${roman_color}  font-semibold`}>Roman</span>
+      &nbsp;-&nbsp;
+      <span className={`${float_color}  font-semibold`}>Float</span>
+      &nbsp;-&nbsp;
       <span className={`${integer_color}  font-semibold`}>Integer</span>
       <br />
-      <input className='mr-5 w-[223px] base-edit' type="text" onChange={numberChange} value={to_square} />
+      <input className="mr-5 w-[223px] base-edit" type="text" onChange={numberChange} value={to_square_root} />
     </>
-  )
+  );
 }
-
-

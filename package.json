@@ -1,10 +1,10 @@
 {
   "scripts": {
     "start": "npm run prod-has-czech",
-    "dev-has-czech":     "node ./Type-Czech/make_HAS-CZECH.js      && node server-app/index.js  ./Type-Czech/config_HAS-CZECH.js",
+    "dev-has-czech": "node ./Type-Czech/make_HAS-CZECH.js      && node server-app/index.js  ./Type-Czech/config_HAS-CZECH.js",
     "dev-without-czech": "node ./Type-Czech/make_WITHOUT-CZECH.js  && node server-app/index.js  ./Type-Czech/config_WITHOUT-CZECH.js",
     "express-favicon": "^2.0.1",
-    "prod-has-czech":     "node ./Type-Czech/make_HAS-CZECH.js      && npm run make-rollup  && npm run server-start  ./Type-Czech/config_HAS-CZECH.js",
+    "prod-has-czech": "node ./Type-Czech/make_HAS-CZECH.js      && npm run make-rollup  && npm run server-start  ./Type-Czech/config_HAS-CZECH.js",
     "prod-without-czech": "node ./Type-Czech/make_WITHOUT-CZECH.js  && npm run make-rollup  && npm run server-start  ./Type-Czech/config_WITHOUT-CZECH.js",
     "make-rollup": "vite build && vite build --ssr",
     "server-start": "cross-env NODE_ENV=production node server-app/index.js"
@@ -24,5 +24,8 @@
     "tailwindcss": "^3.0.23",
     "vite": "^2.8.4",
     "vite-plugin-ssr": "^0.3.59"
+  },
+  "devDependencies": {
+    "prettier": "2.6.2"
   }
 }

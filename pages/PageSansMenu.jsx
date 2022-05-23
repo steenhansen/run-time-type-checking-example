@@ -1,13 +1,13 @@
-import { useServerContext } from '../server-app/serverBrowserContext'
+import { useServerContext } from "../server-app/serverBrowserContext";
 
-export { PageSansMenu }
+export { PageSansMenu };
 
 function PageSansMenu() {
-  const server_variables = useServerContext()
+  const server_variables = useServerContext();
   const { Page } = server_variables;
   return (
-    <div className="" >
+    <div className="">
       <Page />
     </div>
-  )
+  );
 }

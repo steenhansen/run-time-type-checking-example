@@ -1,23 +1,22 @@
-import ReactDOM from 'react-dom';
-import ReactDOMServer from 'react-dom/server';
-import { EncaseStore } from '../pages/EncaseStore';
+import ReactDOM from "react-dom";
+import ReactDOMServer from "react-dom/server";
+import { EncaseStore } from "../pages/EncaseStore";
 
-const ROOT_ELEMENT_ID = 'page-view';
+const ROOT_ELEMENT_ID = "page-view";
 
 function serverVarsToClient() {
   const passToClient = [
-    'pageProps',                // automatic sharing
-    'routeParams',              // automatic sharing
-    'url',
-    'G_TYPE_CZECH_ON',
-    'G_TYPE_CZECH_OPTIONS'];
+    "pageProps", // automatic sharing
+    "routeParams", // automatic sharing
+    "url",
+    "G_TYPE_CZECH_ON",
+    "G_TYPE_CZECH_OPTIONS",
+  ];
   return passToClient;
 }
 
 function sharedClientServer(server_variables) {
-  return (
-      <EncaseStore server_variables={server_variables}></EncaseStore>
-  );
+  return <EncaseStore server_variables={server_variables}></EncaseStore>;
 }
 
 function serverRender(server_variables) {

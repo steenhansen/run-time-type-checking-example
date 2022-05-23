@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 export { Page };
 
-// This is not used. 
+// This is not used.
 
 function Page({ is404 }) {
   if (is404) {
