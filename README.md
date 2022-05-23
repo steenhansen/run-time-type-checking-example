@@ -4,13 +4,13 @@ which provides run time type checking.
 
 There is only one function that is type checked in this program, async serverGetSqrt(), which fetches a
 square root from the server. Both parameters and results are inspected for
-correctness when Type-Czech is turned on.
+correctness when Type-Czech is turned on. When Type-Czech is turned off, then there is no discernible effect.
 
 The code to link-up the async serverGetSqrt() function to type checking is
 
 `serverGetSqrt = type_czech.linkUp(serverGetSqrt, PRE_serverGetSqrt, POST_serverGetSqrt); `
 
-`async function serverGetSqrt(number_style, to_square_root) { ...`
+`async function serverGetSqrt(number_style, to_square_root) { ... }`
 
 Where PRE_serverGetSqrt() is the function that checks parameters before the actual serverGetSqrt() function is called. While the POST_serverGetSqrt() function executes after the actual function is called to
 analyze the returned result value for any issues.
@@ -32,7 +32,7 @@ Checks that the parameters for serverGetSqrt(), number_style and to_square_root
 ## POST_serverGetSqrt()
 
 - checks that the server actually responds with a value to the fetch() call within 3 seconds
-- verifies that the result number type is the same as the input, for example 'four' and 'two'
+- verifies that the type of number does not change, for example the square root of 'four' is 'two'
 - console.logs error messages like "Error -'xyz' is not a valid roman number"
 
 ## Running program
