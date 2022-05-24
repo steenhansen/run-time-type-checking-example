@@ -185,6 +185,8 @@ function romanToInt(roman_str) {
 
   try {
     if (typeof roman_str !== "string") throw "romanToInt(), not a string";
+    if (roman_str === "") throw "romanToInt(), no '' in Roman";
+
     const roman_lower = roman_str.toLowerCase();
     const trim_roman = roman_lower.trim();
     const not_ivxlcdm = trim_roman.match(/[^ivxlcdm]/g);
@@ -213,8 +215,7 @@ function romanToInt(roman_str) {
 function intToRoman(int_num) {
   if (!isNumeric(int_num)) return "intToRoman, not a number";
   if (int_num > LARGEST_ROMAN) return "intToRoman, too big";
-  if (int_num < 1) return new Error(BEGIN_SERVER_ERROR + " no zero in Roman ");
-
+  if (int_num < 1) return "intToRoman, too small";
   // prettier-ignore
   const roman_sizes = [
   3000, 'mmm', 2000, 'mm', 1000, 'm',

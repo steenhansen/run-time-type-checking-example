@@ -50,7 +50,7 @@ function POST_serverGetSqrt(square_promise) {
       } else {
         fakeConsole(`serverGetSqrt() returned with the value of '${square_root}' which is a ${fetched_number_type}`);
       }
-      if (fetched_number_type === "Roman") {
+      if (fetched_number_type === "Roman" && fetched_value !== "") {
         const start_number = romanToInt(fetched_value);
         const end_number = romanToInt(square_root);
         if (!end_number instanceof Error) {

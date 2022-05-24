@@ -4,6 +4,9 @@ const { wordToInt } = require("../import-2-require/word-numbers-require");
 
 function validRomanNumber(number_style, num_to_square) {
   if (number_style === "roman-style") {
+    if (num_to_square.trim() === "") {
+      return BEGIN_SERVER_ERROR + `- '${num_to_square}' is an invalid roman number`;
+    }
     const roman_integer = romanToInt(num_to_square);
     if (!Number.isInteger(roman_integer)) {
       return BEGIN_SERVER_ERROR + `- '${num_to_square}' is not a valid roman number I..MMMCMXCIX`;
@@ -28,14 +31,13 @@ function validFloat(number_style, float_string) {
   }
 }
 
-function validInteger(number_style, num_to_square) {
+function validInteger(number_style, integer_string) {
   if (number_style === "integer-style") {
-    if (num_to_square.includes(".")) {
-      return BEGIN_SERVER_ERROR + `- '${num_to_square}' is not an integer`;
+    if (!isNumeric(integer_string)) {
+      return BEGIN_SERVER_ERROR + `- '${integer_string}' is not a integer`;
     }
-    const integer_num = Number(num_to_square);
-    if (Number.isNaN(integer_num)) {
-      return BEGIN_SERVER_ERROR + `- '${num_to_square}' is not an integer`;
+    if (integer_string.includes(".")) {
+      return BEGIN_SERVER_ERROR + `- '${integer_string}' is not an integer`;
     }
   }
 }

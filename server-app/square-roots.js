@@ -11,7 +11,7 @@ function romanSquareRoot(to_sqrt) {
   const decimal_sqrt = Math.sqrt(decimal_number);
   const integer_sqrt = Math.trunc(decimal_sqrt);
   let roman_result;
-  if (decimal_sqrt === integer_sqrt) {
+  if (integer_sqrt !== 0 && decimal_sqrt === integer_sqrt) {
     roman_result = intToRoman(integer_sqrt);
   } else {
     roman_result = new Error(BEGIN_SERVER_ERROR + " Cannot represent " + decimal_sqrt + " in Roman numerals");
@@ -37,7 +37,7 @@ function wordSquareRoot(to_sqrt) {
 
 function floatSquareRoot(to_sqrt) {
   if (!isNumeric(to_sqrt)) {
-    const float_error = new Error(BEGIN_SERVER_ERROR + ", " + to_sqrt + " is not a number");
+    const float_error = new Error(BEGIN_SERVER_ERROR + ", " + to_sqrt + " is not a float");
     return float_error;
   }
   const pos_float = Math.abs(to_sqrt);
@@ -53,11 +53,10 @@ function floatSquareRoot(to_sqrt) {
 
 function integerSquareRoot(to_sqrt) {
   if (!isNumeric(to_sqrt)) {
-    const not_int_error = new Error(BEGIN_SERVER_ERROR + ", " + to_sqrt + " is not a number");
+    const not_int_error = new Error(BEGIN_SERVER_ERROR + ", " + to_sqrt + " is not a integer");
     return not_int_error;
   }
   const make_number = Number(to_sqrt);
-
   if (Math.trunc(make_number) != make_number) {
     const not_integer = new Error(BEGIN_SERVER_ERROR + ", " + make_number + " is not an integer");
     return not_integer;
