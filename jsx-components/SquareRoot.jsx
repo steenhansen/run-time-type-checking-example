@@ -19,8 +19,8 @@ async function serverGetSqrt(number_style, to_square_root) {
   };
   const get_response = await fetch(the_url, requestOptions);
   const sqrt_status = get_response.status;
+  // Simulate a server crash by not returning from a 400
   if (sqrt_status !== INVALID_SQRT_HTTP) {
-    // Simulate a server crash by returning 400 which will be ignored
     const num_style_sqrt_obj = await get_response.json();
     return num_style_sqrt_obj;
   }
