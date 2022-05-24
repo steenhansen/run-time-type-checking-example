@@ -32,7 +32,7 @@ Checks that the parameters for serverGetSqrt(), number_style and to_square_root
 ## POST_serverGetSqrt()
 
 - checks that the server actually responds with a value to the fetch() call within 3 seconds
-- verifies that the type of number does not change, for example the square root of 'four' is 'two'
+- verifies that the type of number returned is the same, for example the square root of 'four' is 'two'
 - console.logs error messages like "Error -'xyz' is not a valid roman number"
 
 ## Running program
