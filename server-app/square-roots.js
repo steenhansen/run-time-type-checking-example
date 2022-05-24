@@ -14,7 +14,7 @@ function romanSquareRoot(to_sqrt) {
   if (decimal_sqrt === integer_sqrt) {
     roman_result = intToRoman(integer_sqrt);
   } else {
-    roman_result = new Error(BEGIN_SERVER_ERROR + "Cannot represent " + decimal_sqrt + " in Roman numerals");
+    roman_result = new Error(BEGIN_SERVER_ERROR + " Cannot represent " + decimal_sqrt + " in Roman numerals");
   }
   return roman_result;
 }
@@ -30,7 +30,7 @@ function wordSquareRoot(to_sqrt) {
   if (decimal_sqrt === integer_sqrt) {
     word_result = intToWord(integer_sqrt);
   } else {
-    word_result = new Error(BEGIN_SERVER_ERROR + "Cannot represent " + decimal_sqrt + " in Words");
+    word_result = new Error(BEGIN_SERVER_ERROR + " Cannot represent " + decimal_sqrt + " in Words");
   }
   return word_result;
 }

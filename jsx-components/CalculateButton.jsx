@@ -10,7 +10,7 @@ function CalculateButton({ squareTheNumber, number_style }) {
   return (
     <ButtonBase className="">
       <a onClick={squareTheNumber}>
-        Calculate <span className="sqrt-look">&#8730;</span>
+        Calculate as <span className="sqrt-look">&#8730;</span>
         <span className="-ml-0.5 overline">{number_type}</span>&nbsp;
       </a>
     </ButtonBase>

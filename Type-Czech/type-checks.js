@@ -70,7 +70,7 @@ function noServerAcknowledgement() {
   if (fetched_number_type === "Unknown") {
     fakeConsole(`Server did not respond because type of number was 'Unknown', not one of Word/Roman/Float/Integer`);
   } else {
-    fakeConsole(`Server did not respond because '${fetched_value}' is not a ${fetched_number_type}`);
+    fakeConsole(`Server did not respond because '${fetched_value}' is not a ${fetched_number_type}, or free Heroku server is asleep`);
   }
   type_czech.check_assert(`POST_serverGetSqrt E did not return within ${MAX_TEST_AJAX_DELAY_SEC} milliseconds`);
 }
