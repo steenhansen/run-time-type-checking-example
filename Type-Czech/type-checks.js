@@ -37,7 +37,6 @@ function POST_serverGetSqrt(square_promise) {
   fakeConsole(`Waiting for serverGetSqrt() to return from server with the square root of '${fetched_value}' as a ${fetched_number_type} type`);
   let is_resolved = false;
   square_promise.then((num_style_sqrt_obj) => {
-    //console.log("just got back from server---", num_style_sqrt_obj);
     if (num_style_sqrt_obj !== undefined) {
       is_resolved = true;
       const result_err = type_czech.checkParam_type(num_style_sqrt_obj, SERVER_RESULT_SHAPE);
@@ -54,7 +53,9 @@ function POST_serverGetSqrt(square_promise) {
       if (fetched_number_type === "Roman") {
         const start_number = romanToInt(fetched_value);
         const end_number = romanToInt(square_root);
-        fakeConsole("Roman to decimal values " + end_number + "^2 = " + start_number);
+        if (!end_number instanceof Error) {
+          fakeConsole("Roman to decimal values " + end_number + "^2 = " + start_number);
+        }
       }
     }
   });

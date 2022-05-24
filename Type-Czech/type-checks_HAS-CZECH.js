@@ -53,7 +53,9 @@ function POST_serverGetSqrt(square_promise) {
       if (fetched_number_type === "Roman") {
         const start_number = romanToInt(fetched_value);
         const end_number = romanToInt(square_root);
-        fakeConsole("Roman to decimal values " + end_number + "^2 = " + start_number);
+        if (!end_number instanceof Error) {
+          fakeConsole("Roman to decimal values " + end_number + "^2 = " + start_number);
+        }
       }
     }
   });
