@@ -1,4 +1,4 @@
-The web page [Run-Time-Type-Checking-Example](https://run-time-type-checking.herokuapp.com/) exists to highlight the use of the
+The web page [Run-Time-Type-Checking-Example](https://run-time-type-checking.herokuapp.com/), a [vite-plugin-ssr](https://vite-plugin-ssr.com/) project, exists to highlight the use of the
 [Type-Czech Javascript library](https://github.com/steenhansen/type-czech)
 which provides run time type checking in Node.js and the browser. Note slow start up time as on free Heroku dyno.
 
@@ -37,25 +37,25 @@ Checks that the parameters for serverGetSqrt(), number_style and to_square_root
 
 ## Running program
 
-- Local Dev with Type-Czech on
+- Localhost Dev, with Type-Czech on
   - npm run dev-has-czech
 
 <br/>
 
-- Local Dev with Type-Czech off ( Run Time Type Checking On and Off radio buttons do nothing )
+- Localhost Dev, with Type-Czech off
   - npm run dev-without-czech
 
 <br/>
 
-- Local Prod with Type-Czech on
+- Localhost Prod, with Type-Czech on
   - npm run prod-has-czech
 
 <br/>
 
-- Local Prod with Type-Czech off ( Run Time Type Checking On and Off radio buttons do nothing )
+- Localhost Prod, with Type-Czech off
   - npm run prod-without-czech
 
 <br/>
 
-- Run on Heroku, no Proc file needed
+- Run on Heroku, with Type-Czech on
   - npm run start
