@@ -213,7 +213,8 @@ function romanToInt(roman_str) {
 function intToRoman(int_num) {
   if (!isNumeric(int_num)) return "intToRoman, not a number";
   if (int_num > LARGEST_ROMAN) return "intToRoman, too big";
-  if (int_num < 1) return "intToRoman, too small";
+  if (int_num < 1) return new Error(BEGIN_SERVER_ERROR + " no zero in Roman ");
+
   // prettier-ignore
   const roman_sizes = [
   3000, 'mmm', 2000, 'mm', 1000, 'm',
