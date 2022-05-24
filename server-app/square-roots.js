@@ -20,6 +20,11 @@ function romanSquareRoot(to_sqrt) {
 }
 
 function wordSquareRoot(to_sqrt) {
+  const trimmed_word = to_sqrt.trim();
+  if (trimmed_word.startsWith("-")) {
+    const neg_word_error = new Error(BEGIN_SERVER_ERROR + " negative words not supported");
+    return neg_word_error;
+  }
   decimal_number = wordToInt(to_sqrt);
   if (decimal_number instanceof Error) {
     return decimal_number;

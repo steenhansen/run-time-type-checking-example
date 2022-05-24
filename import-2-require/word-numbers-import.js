@@ -112,8 +112,15 @@ const WORD_NUMBERS = [
   'ninehundredninety', 'ninehundredninetyone', 'ninehundredninetytwo', 'ninehundredninetythree', 'ninehundredninetyfour', 'ninehundredninetyfive', 'ninehundredninetysix', 'ninehundredninetyseven', 'ninehundredninetyeight', 'ninehundredninetynine',
 
 ];
+
 function wordToInt(word_number) {
   if (typeof word_number === "string") {
+    const no_20s = word_number.replace(/%20/g, "");
+    const trimmed_word = no_20s.trim();
+    if (trimmed_word.startsWith("-")) {
+      const neg_word_error = new Error(BEGIN_SERVER_ERROR + " negative words not supported");
+      return neg_word_error;
+    }
     const lower_word = word_number.toLowerCase();
     const alpha_only = lower_word.replace(/[^a-z]/g, "");
     if (alpha_only) {
