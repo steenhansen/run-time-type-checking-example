@@ -1,6 +1,9 @@
 const LARGEST_ROMAN = 3999;
 const LARGEST_WORD_NUMBER = 999;
 
+const INVALID_SQRT_HTTP = 400;
+const VALID_SQRT_HTTP = 200;
+
 const APP_TITLE = "Run Time Type Checks";
 const APP_DESCRIPTION = "How to use Type-Czech for run time type checking";
 
@@ -97,6 +100,8 @@ export {
   BEGIN_SERVER_ERROR,
   DEFAULT_CONFIG,
   HTTP_PORT,
+  INVALID_SQRT_HTTP,
+  VALID_SQRT_HTTP,
   LARGEST_ROMAN,
   LARGEST_WORD_NUMBER,
   MAX_TEST_AJAX_DELAY_SEC,

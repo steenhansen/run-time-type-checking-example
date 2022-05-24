@@ -1,4 +1,4 @@
-const { isNumeric, BEGIN_SERVER_ERROR } = require("../import-2-require/common-2-require");
+const { isNumeric, BEGIN_SERVER_ERROR, INVALID_SQRT_HTTP, VALID_SQRT_HTTP } = require("../import-2-require/common-2-require");
 const { romanToInt, intToRoman } = require("../import-2-require/roman-numbers-require");
 const { wordToInt, intToWord } = require("../import-2-require/word-numbers-require");
 const { numberTypeError } = require("../import-2-require/valid-types-require");
@@ -93,27 +93,25 @@ function getInputNumber(req) {
 }
 
 function returnSquareRoot(server_style, square_root, to_sqrt, res) {
-  console.log("return ZZZZZ", server_style, square_root, to_sqrt);
+  let return_status = VALID_SQRT_HTTP;
+  let return_text;
   if (numberTypeError(server_style, to_sqrt)) {
-    console.log("No acknowledgement as number type did not match the value");
+    return_text = "Number type did not match the value type";
+    return_status = INVALID_SQRT_HTTP;
   } else if (square_root instanceof Error) {
     const wrong_type_mess = square_root.message;
-    console.log("return JJJJJJJ", wrong_type_mess, typeof wrong_type_mess);
-    const wrong_type_result = JSON.stringify({
+    return_text = JSON.stringify({
       server_style,
       square_root: wrong_type_mess,
     });
-    console.log("return AAAA", wrong_type_result);
-    res.status(200).type("text/plain").send(wrong_type_result);
   } else {
     const square_root_str = square_root.toString();
-    const server_result = JSON.stringify({
+    return_text = JSON.stringify({
       server_style,
       square_root: square_root_str,
     });
-    console.log("return BBBBB", server_result);
-    res.status(200).type("text/plain").send(server_result);
   }
+  res.status(return_status).type("text/plain").send(return_text);
 }
 
 module.exports = {

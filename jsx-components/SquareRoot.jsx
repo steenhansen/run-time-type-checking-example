@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { type_czech } from "../Type-Czech/make-Type-Czech-import";
 import { CalculateButton } from "./CalculateButton";
 import { NumberEnter } from "./NumberEnter";
-import { BEGIN_SERVER_ERROR, numberStyle } from "../import-2-require/common-2-import";
+import { BEGIN_SERVER_ERROR, numberStyle, INVALID_SQRT_HTTP } from "../import-2-require/common-2-import";
 import { NumberStyle } from "./NumberStyle";
 import { CheckingOnOff } from "./CheckingOnOff";
 import { PRE_serverGetSqrt, POST_serverGetSqrt } from "../Type-Czech/type-checks";
@@ -12,19 +12,17 @@ export { SquareRoot };
 
 serverGetSqrt = type_czech.linkUp(serverGetSqrt, PRE_serverGetSqrt, POST_serverGetSqrt);
 async function serverGetSqrt(number_style, to_square_root) {
-  try {
-    const the_url = `/${number_style}/${to_square_root}`;
-    const requestOptions = {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    };
-    const get_response = await fetch(the_url, requestOptions);
-    console.log("the GET_RESPONSE ", get_response);
+  const the_url = `/${number_style}/${to_square_root}`;
+  const requestOptions = {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  };
+  const get_response = await fetch(the_url, requestOptions);
+  const sqrt_status = get_response.status;
+  if (sqrt_status !== INVALID_SQRT_HTTP) {
+    // Simulate a server crash by returning 400 which will be ignored
     const num_style_sqrt_obj = await get_response.json();
-    console.log("the ANSYNC num_style_sqrt_obj ", num_style_sqrt_obj);
     return num_style_sqrt_obj;
-  } catch (e) {
-    return "serverGetSqrt-Error - " + e.message;
   }
 }
 
@@ -40,15 +38,15 @@ function SquareRoot() {
     fakeConsole(" ");
     setServerSqrt("waiting for server ...");
     const num_style_sqrt_obj = await serverGetSqrt(number_style, to_square_root);
-    console.log("the num_style_sqrt_obj NOT OBJ", num_style_sqrt_obj, typeof num_style_sqrt_obj);
-    const { square_root } = num_style_sqrt_obj;
-    console.log("the square_root ", square_root, typeof square_root);
-    if (square_root.startsWith(BEGIN_SERVER_ERROR)) {
-      setServerSqrt("Unrepresentable in " + fetched_number_type);
-    } else {
-      setServerSqrt(square_root);
+    if (num_style_sqrt_obj !== undefined) {
+      const { square_root } = num_style_sqrt_obj;
+      if (square_root.startsWith(BEGIN_SERVER_ERROR)) {
+        setServerSqrt("Unrepresentable in " + fetched_number_type);
+      } else {
+        setServerSqrt(square_root);
+      }
+      fakeConsole(" ");
     }
-    fakeConsole(" ");
   }
 
   if (!type_czech.isPruned()) {
@@ -77,11 +75,3 @@ function SquareRoot() {
     </>
   );
 }
-
-/*
-8730
-
-margin-right:-1px 
-font-size: 22px
-
-*/
