@@ -1,76 +1,61 @@
-import { type_czech } from "./make-Type-Czech-import";
-import { numberStyle, MAX_TEST_AJAX_DELAY_SEC, BEGIN_SERVER_ERROR, VALID_NUMBER_TYPES, SERVER_RESULT_SHAPE } from "../import-2-require/common-2-import";
-import { numberNotMatchType } from "../import-2-require/valid-types-import";
-import { fakeConsole } from "../jsx-components/fake-console";
-import { romanToInt } from "../import-2-require/roman-numbers-import";
+The web page [Run-Time-Type-Checking-Example](https://run-time-type-checking.herokuapp.com/), a [vite-plugin-ssr](https://vite-plugin-ssr.com/) project, exists to highlight the use of the
+[Type-Czech Javascript library](https://github.com/steenhansen/type-czech)
+which provides run time type checking in Node.js and the browser. Note slow start up time as on free Heroku dyno.
 
-export { PRE_serverGetSqrt, POST_serverGetSqrt };
+There is only one function that is type checked in this program, async serverGetSqrt(), which fetches a
+square root from the server. Both parameters and results are inspected for
+correctness when Type-Czech is turned on. When Type-Czech is turned off, then there is no discernible effect.
 
-function PRE_serverGetSqrt(browser_num_style, num_to_square) {
-  const the_parameters = [browser_num_style, num_to_square];
-  const the_types = ["string", "string"];
-  const parameter_err = type_czech.checkParam_type(the_parameters, the_types); // warning not two strings
-  if (parameter_err) {
-    return parameter_err;
-  }
-  fetched_number_type = numberStyle(browser_num_style);
-  fetched_value = num_to_square;
-  if (!VALID_NUMBER_TYPES.includes(browser_num_style)) {
-    const unknown_type = BEGIN_SERVER_ERROR + `- '${browser_num_style}' is not a valid type`;
-    fakeConsole("Warning found : " + unknown_type); // warning 4<>Unknown type
-    return unknown_type;
-  }
-  fakeConsole(`Checking that '${num_to_square}' is a ${fetched_number_type} before calling serverGetSqrt()`);
-  const number_error = numberNotMatchType(browser_num_style, num_to_square);
-  if (number_error) {
-    fakeConsole("Warning PRE_serverGetSqrt() found : " + number_error); // warning 4<>Roman type
-    fakeConsole(" ");
-    return number_error;
-  }
-  fakeConsole(" ");
-}
+The code to link-up the async serverGetSqrt() function to type checking is
 
-function POST_serverGetSqrt(square_promise) {
-  if (!type_czech.typeIsA(square_promise, "Promise")) {
-    return "POST_serverGetSqrt is not returning a promise, but instead a : " + square_promise.toString();
-  }
-  fakeConsole(`Waiting for serverGetSqrt() to return from server with the square root of '${fetched_value}' as a ${fetched_number_type} type`);
-  let is_resolved = false;
-  square_promise.then((num_style_sqrt_obj) => {
-    if (num_style_sqrt_obj !== undefined) {
-      is_resolved = true;
-      const result_err = type_czech.checkParam_type(num_style_sqrt_obj, SERVER_RESULT_SHAPE);
-      if (result_err) {
-        return result_err;
-      }
-      const { square_root } = num_style_sqrt_obj;
-      if (square_root.startsWith(BEGIN_SERVER_ERROR)) {
-        type_czech.check_assert(`POST_serverGetSqrt return value of ${square_root}  `);
-        fakeConsole(`serverGetSqrt() returned with the value of '${square_root}'`);
-      } else {
-        fakeConsole(`serverGetSqrt() returned with the value of '${square_root}' which is a ${fetched_number_type}`);
-      }
-      if (fetched_number_type === "Roman" && fetched_value !== "") {
-        const start_number = romanToInt(fetched_value);
-        const end_number = romanToInt(square_root);
-        if (!end_number instanceof Error) {
-          fakeConsole("Roman to decimal values " + end_number + "^2 = " + start_number);
-        }
-      }
-    }
-  });
+`serverGetSqrt = type_czech.linkUp(serverGetSqrt, PRE_serverGetSqrt, POST_serverGetSqrt); `
 
-  setTimeout(() => (is_resolved ? console.log("server acknowledged fetch") : noServerAcknowledgement()), MAX_TEST_AJAX_DELAY_SEC);
-}
+`async function serverGetSqrt(number_style, to_square_root) { ... }`
 
-var fetched_number_type = "";
-var fetched_value = "";
+Where PRE_serverGetSqrt() is the function that checks parameters before the actual serverGetSqrt() function is called. While the POST_serverGetSqrt() function executes after the actual function is called to
+analyze the returned result value for any issues.
 
-function noServerAcknowledgement() {
-  if (fetched_number_type === "Unknown") {
-    fakeConsole(`Server did not respond because type of number was 'Unknown', not one of Word/Roman/Float/Integer`);
-  } else {
-    fakeConsole(`Server did not respond because '${fetched_value}' is not a ${fetched_number_type}, or free Heroku server is asleep`);
-  }
-  type_czech.check_assert(`POST_serverGetSqrt E did not return within ${MAX_TEST_AJAX_DELAY_SEC} milliseconds`);
-}
+The two PRE and POST type-checking functions reside in [/Type-Czech/type-checks_HAS-CZECH.js](/Type-Czech/type-checks_HAS-CZECH.js).
+
+## PRE_serverGetSqrt()
+
+Checks that the parameters for serverGetSqrt(), number_style and to_square_root
+
+- are two strings, no more, no less
+- the first parameter, number_style, must be one of Word/Roman/Float/Integer
+- the second paramter, to_square_root, must be
+  - a word like 'nine hundred sixtyone' if the type of number is 'Word'
+  - a Roman numeral like 'MCDXLIV' if the type of number is 'Roman'
+  - a float like '1.2' if the type of number is 'Float'
+  - an integer like '-2' if the type of number is 'Integer'
+
+## POST_serverGetSqrt()
+
+- checks that the server actually responds with a value to the fetch() call within 3 seconds
+- verifies that the type of number returned is the same, for example the square root of 'four' is 'two'
+- console.logs error messages like "Error -'xyz' is not a valid roman number"
+
+## Running program
+
+- Localhost Dev, with Type-Czech on
+  - npm run dev-has-czech
+
+<br/>
+
+- Localhost Dev, with Type-Czech off
+  - npm run dev-without-czech
+
+<br/>
+
+- Localhost Prod, with Type-Czech on
+  - npm run prod-has-czech
+
+<br/>
+
+- Localhost Prod, with Type-Czech off
+  - npm run prod-without-czech
+
+<br/>
+
+- Run on Heroku, with Type-Czech on
+  - npm run start
