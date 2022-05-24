@@ -1,12 +1,14 @@
-The web page [Run-Time-Type-Checking-Example](https://run-time-type-checking.herokuapp.com/), a [vite-plugin-ssr](https://vite-plugin-ssr.com/) project, exists to highlight the use of the
+The [Run-Time-Type-Checking-Example web page](https://run-time-type-checking.herokuapp.com/) , a [vite-plugin-ssr](https://vite-plugin-ssr.com/) project, exists to highlight the use of the
 [Type-Czech Javascript library](https://github.com/steenhansen/type-czech)
-which provides run time type checking in Node.js and the browser. Note slow start up time as on free Heroku dyno.
+which provides run time type checking in Node.js and the browser. Note slow start up time as on free Heroku dyno. It finds the square roots of differing types of numbers with a type checked Javascript async fetch call.
+
+![Roman 38 is square root of 1444](pages/screen-shot.png)
 
 There is only one function that is type checked in this program, async serverGetSqrt(), which fetches a
 square root from the server. Both parameters and results are inspected for
 correctness when Type-Czech is turned on. When Type-Czech is turned off, then there is no discernible effect.
 
-The code to link-up the async serverGetSqrt() function to type checking is
+The code to link-up the async serverGetSqrt() function to the type checking functions is:
 
 `serverGetSqrt = type_czech.linkUp(serverGetSqrt, PRE_serverGetSqrt, POST_serverGetSqrt); `
 
@@ -57,5 +59,5 @@ Checks that the parameters for serverGetSqrt(), number_style and to_square_root
 
 <br/>
 
-- Run on Heroku, with Type-Czech on
+- Run on Heroku, with Type-Czech on, [https://run-time-type-checking.herokuapp.com/](https://run-time-type-checking.herokuapp.com/)
   - npm run start
