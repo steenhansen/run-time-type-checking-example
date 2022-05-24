@@ -1,4 +1,4 @@
-[Run-Time-Type-Checking-Example](https://run-time-type-checking.herokuapp.com/) exists to highlight the use of the
+The web page [Run-Time-Type-Checking-Example](https://run-time-type-checking.herokuapp.com/) exists to highlight the use of the
 [Type-Czech Javascript library](https://github.com/steenhansen/type-czech)
 which provides run time type checking in Node.js and the browser. Note slow start up time as on free Heroku dyno.
 
