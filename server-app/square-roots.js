@@ -40,13 +40,15 @@ function floatSquareRoot(to_sqrt) {
     const float_error = new Error(BEGIN_SERVER_ERROR + ", " + to_sqrt + " is not a number");
     return float_error;
   }
-  if (to_sqrt < 0) {
-    const pos_float = Math.abs(to_sqrt);
-    const neg_float_res = Math.sqrt(pos_float) + "i";
-    return neg_float_res;
+  const pos_float = Math.abs(to_sqrt);
+  let float_sqrt = Math.sqrt(pos_float);
+  if (float_sqrt === Math.trunc(float_sqrt)) {
+    float_sqrt += ".0";
   }
-  const pos_float_result = Math.sqrt(to_sqrt);
-  return pos_float_result;
+  if (to_sqrt < 0) {
+    float_sqrt += "i";
+  }
+  return float_sqrt;
 }
 
 function integerSquareRoot(to_sqrt) {
