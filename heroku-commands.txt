@@ -7,7 +7,7 @@ Launch to Heroku:
   $ git commit -am 'abc'
   $ git push heroku main
 
-https://phone-recipes.herokuapp.com/
+https://run-time-type-checking.herokuapp.com/
 
 
 Check errors:
