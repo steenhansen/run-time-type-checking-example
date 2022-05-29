@@ -17,7 +17,7 @@ const VERS_NUM = "version 1.3.0 2022-05-23";
 /*
     This software is released under the MIT license:
 
-   @license Copyright (c) 2021 Steen Hansen
+   @license Copyright (c) 2022 Steen Hansen
 
     Permission is hereby granted, free of charge, to any person obtaining a copy of
     this software and associated documentation files (the "Software"), to deal in
