@@ -1,4 +1,4 @@
-The Run-Time-Type-Checking-Example web page, [https://run-time-type-checking.herokuapp.com/](https://run-time-type-checking.herokuapp.com/) a free slow to start [vite-plugin-ssr](https://vite-plugin-ssr.com/) project, exists to highlight the use of the
+The Run-Time-Type-Checking-Example web page, [https://type-czech-always-on.herokuapp.com/](https://type-czech-always-on.herokuapp.com/) a free slow to start [vite-plugin-ssr](https://vite-plugin-ssr.com/) project, exists to highlight the use of the
 [Type-Czech Javascript library](https://github.com/steenhansen/type-czech)
 which provides run time type checking in Node.js and the browser. Note slow start up time as on free Heroku dyno. It finds the square roots of differing types of numbers with a type checked Javascript async fetch call.
 
@@ -51,13 +51,10 @@ Checks that the parameters for serverGetSqrt(), number_style and to_square_root
 
 - Localhost Prod, with Type-Czech on
   - npm run prod-has-czech
+  - http://localhost:3000/
 
 <br/>
 
 - Localhost Prod, with Type-Czech off
   - npm run prod-without-czech
-
-<br/>
-
-- Run on Heroku, with Type-Czech on, [https://run-time-type-checking.herokuapp.com/](https://run-time-type-checking.herokuapp.com/)
-  - npm run start
+  - http://localhost:3000/
