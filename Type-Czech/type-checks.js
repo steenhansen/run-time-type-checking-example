@@ -10,6 +10,7 @@ function PRE_serverGetSqrt(browser_num_style, num_to_square) {
   const the_parameters = [browser_num_style, num_to_square];
   const the_types = ["string", "string"];
   const parameter_err = type_czech.checkParam_type(the_parameters, the_types); // warning not two strings
+  console.log('PRE_serverGetSqrt ==> ', the_parameters, the_types)
   if (parameter_err) {
     return parameter_err;
   }
@@ -34,11 +35,13 @@ function POST_serverGetSqrt(square_promise) {
   if (!type_czech.typeIsA(square_promise, "Promise")) {
     return "POST_serverGetSqrt is not returning a promise, but instead a : " + square_promise.toString();
   }
+  console.log('POST_serverGetSqrt is a Promise ==> ', square_promise);
   fakeConsole(`Waiting for serverGetSqrt() to return from server with the square root of '${fetched_value}' as a ${fetched_number_type} type`);
   let is_resolved = false;
   square_promise.then((num_style_sqrt_obj) => {
     if (num_style_sqrt_obj !== undefined) {
       is_resolved = true;
+      console.log('POST_serverGetSqrt is an Object ==> ', num_style_sqrt_obj, SERVER_RESULT_SHAPE);
       const result_err = type_czech.checkParam_type(num_style_sqrt_obj, SERVER_RESULT_SHAPE);
       if (result_err) {
         return result_err;

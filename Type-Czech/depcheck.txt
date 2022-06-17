@@ -1,0 +1,8 @@
+
+npx depcheck false positives:
+
+Unused devDependencies
+* prettier
+
+
+
