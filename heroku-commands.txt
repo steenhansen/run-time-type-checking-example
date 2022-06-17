@@ -11,5 +11,5 @@ https://run-time-type-checking.herokuapp.com/
 
 
 Check errors:
-  $ heroku logs --tail
+ $ heroku logs --tail --app type-czech-always-on
 

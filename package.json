@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "npm run dev-has-czech",
+    "start": "npm run prod-has-czech",
     "dev-has-czech": "node ./Type-Czech/make_HAS-CZECH.js      && node server-app/index.js  ./Type-Czech/config_HAS-CZECH.js",
     "dev-without-czech": "node ./Type-Czech/make_WITHOUT-CZECH.js  && node server-app/index.js  ./Type-Czech/config_WITHOUT-CZECH.js",
     "express-favicon": "^2.0.1",
