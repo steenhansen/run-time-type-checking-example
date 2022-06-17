@@ -2,6 +2,7 @@
 npx depcheck false positives:
 
 Unused dependencies
+* autoprefixer
 * tailwindcss
 
 Unused devDependencies
