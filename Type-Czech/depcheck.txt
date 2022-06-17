@@ -1,8 +1,10 @@
 
 npx depcheck false positives:
 
+Unused dependencies
+* tailwindcss
+
 Unused devDependencies
 * prettier
-
 
 
