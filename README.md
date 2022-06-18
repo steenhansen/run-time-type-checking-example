@@ -37,6 +37,10 @@ Checks that the parameters for serverGetSqrt(), number_style and to_square_root
 - verifies that the type of number returned is the same, for example the square root of 'four' is 'two'
 - console.logs error messages like "Error -'xyz' is not a valid roman number"
 
+## Install
+
+- npm install
+
 ## Running program
 
 - Localhost Dev, with Type-Czech on
