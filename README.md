@@ -1,4 +1,4 @@
-The Run-Time-Type-Checking-Example web page, [https://type-czech-always-on.herokuapp.com/](https://type-czech-always-on.herokuapp.com/) a free slow to start [vite-plugin-ssr](https://vite-plugin-ssr.com/) project, exists to highlight the use of the
+The Run-Time-Type-Checking-Example web page, [https://type-czech-always-on.onrender.com/](https://type-czech-always-on.onrender.com/) a free slow to start [vite-plugin-ssr](https://vite-plugin-ssr.com/) project, exists to highlight the use of the
 [Type-Czech Javascript library](https://github.com/steenhansen/type-czech)
 which provides run time type checking in Node.js and the browser. Note slow start up time as on free Heroku dyno. It finds the square roots of differing types of numbers with a type checked Javascript async fetch call.
 
