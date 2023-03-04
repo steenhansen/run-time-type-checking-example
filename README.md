@@ -62,3 +62,9 @@ Checks that the parameters for serverGetSqrt(), number_style and to_square_root
 - Localhost Prod, with Type-Czech off
   - npm run prod-without-czech
   - http://localhost:3000/
+
+
+## Free Hosting on render.com
+	Web Service
+		Build Command	$ yarn
+		Start Command	$ yarn start
