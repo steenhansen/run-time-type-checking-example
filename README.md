@@ -66,5 +66,7 @@ Checks that the parameters for serverGetSqrt(), number_style and to_square_root
 
 ## Free Hosting on render.com
 	Web Service
+	
+	Settings
 		Build Command	$ yarn
 		Start Command	$ yarn start
