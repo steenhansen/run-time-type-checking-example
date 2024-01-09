@@ -9,9 +9,6 @@
     "make-rollup": "vite build && vite build --ssr",
     "server-start": "cross-env NODE_ENV=production node server-app/index.js"
   },
-  "engines": {
-    "node": "16.14.0"
-  },
   "dependencies": {
     "@vitejs/plugin-react": "^1.2.0",
     "autoprefixer": "^10.4.7",

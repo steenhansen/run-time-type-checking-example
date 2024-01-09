@@ -19,6 +19,12 @@ analyze the returned result value for any issues.
 
 The two PRE and POST type-checking functions reside in [/Type-Czech/type-checks_HAS-CZECH.js](/Type-Czech/type-checks_HAS-CZECH.js).
 
+## TypeCzech is Not Installed, Just Dumped into a Folder
+
+To easily be able to turn on and off type checking from the client browser via the <b>Run Time Type Checking Off</b> radio button, the library just sits the Type-Czech folder, no npm install.
+
+
+
 ## PRE_serverGetSqrt()
 
 Checks that the parameters for serverGetSqrt(), number_style and to_square_root
